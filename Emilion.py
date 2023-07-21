@@ -16,18 +16,21 @@ Style.theme_use("clam")
 Icons = ("Home", "Storage", "Calculator", "Timer", "Notes", "Contacts", "Chat", "Terminal", "Test")
 
 # Windows
-Window = ttk.PanedWindow(Emilion, orient=VERTICAL)
-Window.place(x = 0 , y = 0, width = Widht, height = Height)
+Window = ttk.PanedWindow(Emilion, orient = HORIZONTAL)
+Window.place(x = 0 , y = 0, width = 1000 , height = 1000)
 
 # Frames
-Frame = Frame(Window, relief = "ridge")
-Window.add(Frame, weight = 1)
+FrameLeft = Frame(Window, bg = "blue", relief = "ridge") # Ice Window
+Window.add(FrameLeft, weight = 5) # Start position of Slider
 
-# Draw Menu
+FrameRight = Frame(Window, bg = "red", relief = "ridge") # Fire Window
+Window.add(FrameRight, weight = 30)
+
+# Draw Ice Menu
 Distance = 0
 ButtonIcons = []
 for i in range(len(Icons)):
-    ButtonIcons.append(Button(Frame, text = Icons[i], relief = "ridge", font = ("", 10)))
+    ButtonIcons.append(Button(FrameLeft, text = Icons[i], relief = "ridge", font = ("", 10)))
     ButtonIcons[i].place(x = 0, y = Distance, width = 64, height = 32)
     Distance += 32
 

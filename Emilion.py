@@ -24,7 +24,7 @@ Window.place(x = 0 , y = 0, width = 1000 , height = 1000)
 
 # Frames
 FrameLeft = Frame(Window, bg = "cyan", relief = "ridge") # Ice Window
-Window.add(FrameLeft, weight = 5) # Start position of Slider
+Window.add(FrameLeft, weight = 2) # Start position of Slider
 
 FrameRight = Frame(Window, bg = "red", relief = "ridge") # Fire Window
 Window.add(FrameRight, weight = 30)
@@ -32,9 +32,9 @@ Window.add(FrameRight, weight = 30)
 # Draw Ice Menu
 Distance = 0
 ButtonIcons = []
-for i in range(len(Icons)):
+for i in range(len(Icons)): # Go through list of Icons and place with Run command from Helper class
     ButtonIcons.append(Button(FrameLeft, text = Icons[i], relief = "ridge", font = ("", 10), command = lambda x = i:Helper.Run(x)))
-    ButtonIcons[i].place(x = 0, y = Distance, width = 64, height = 32)
+    ButtonIcons[i].place(x = 0, y = Distance, width = 64, height = 32) # Place under each other
     Distance += 32
 
 # Loop

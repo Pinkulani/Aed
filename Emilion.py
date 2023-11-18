@@ -58,36 +58,12 @@ class Contacts(object):
         Label = LabelFrame(FrameRight, text = "Test Frame", bg = "Pink")
         Label.place(x = 10, y = 10, width = 500, height = 500)
 
-class Chat(object):
-    def __init__(self):
-        pass
-
-    def Draw(self):
-        Label = LabelFrame(FrameRight, text = "Test Frame", bg = "Spring Green")
-        Label.place(x = 10, y = 10, width = 500, height = 500)
-
 class Clock(object):
     def __init__(self):
         pass
 
     def Draw(self):
         Label = LabelFrame(FrameRight, text = "Test Frame", bg = "Yellow")
-        Label.place(x = 10, y = 10, width = 500, height = 500)
-
-class Terminal(object):
-    def __init__(self):
-        pass
-
-    def Draw(self):
-        Label = LabelFrame(FrameRight, text = "Test Frame", bg = "White")
-        Label.place(x = 10, y = 10, width = 500, height = 500)
-
-class Test(object):
-    def __init__(self):
-        pass
-
-    def Draw(self):
-        Label = LabelFrame(FrameRight, text = "Test Frame", bg = "Black")
         Label.place(x = 10, y = 10, width = 500, height = 500)
 
 class Destructor(object):
@@ -124,42 +100,29 @@ class Helper(object):
                 print("Contacts") 
                 Contacts.Draw(self)
             case 7:
-                print("Chat") 
-                Chat.Draw(self)
-            case 8:
                 print("Clock")
                 Clock.Draw(self)
-            case 9:
-                print("Terminal") 
-                Terminal.Draw(self)
-            case 10:
-                print("Test")
-                Test.Draw(self)
-            case 11:
+            case 8:
                 print("Quit")
                 quit()
             case _: # Error
-                # Impossible Error pretty much since I can't implement importing Classes that work with Tkinter dynamically only hardcoded.
                 print("File not found")
-                messagebox.showerror("Error", "App is not installed.") 
+                messagebox.showerror("Error", "App is not installed.")
 
 # Class Setup
 Helper = Helper()
 
 # Setup
-Height = "1000"
-Widht = "1000"
-
 Emilion = Tk()
 Emilion.title("Emilion")
-Emilion.geometry("1000x1000")
+Emilion.geometry("500x500")
 
 Style = ttk.Style()
 Style.theme_use("clam")
 
 # Window
 Window = ttk.PanedWindow(Emilion, orient = HORIZONTAL)
-Window.place(x = 0 , y = 0, width = 1000 , height = 1000)
+Window.place(x = 0 , y = 0, width = 3000 , height = 3000)
 
 # Frames
 FrameLeft = Frame(Window, bg = "Cyan", relief = "ridge") # Blue Window
@@ -169,7 +132,7 @@ FrameRight = Frame(Window, bg = "Red", relief = "ridge") # Red Window
 Window.add(FrameRight, weight = 30)
 
 # Icons that will appear
-Icons = ("Home", "Storage", "Calculator", "Timer", "Colorpicker", "Notes", "Contacts", "Chat", "Clock", "Terminal", "Test", "Quit")
+Icons = ("Home", "Storage", "Calculator", "Timer", "Colorpicker", "Notes", "Contacts", "Clock", "Quit")
 
 # Draw Menu
 Distance = 0

@@ -1,6 +1,8 @@
 # © Pinkulani
 
-import subprocess
+import subprocess, platform
+
+print("Building for platform:", platform.system())
 
 Files = []
 with open("Build.aed", "r") as File:

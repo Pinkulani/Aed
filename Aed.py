@@ -21,9 +21,9 @@ for Character in First: # Get program name
     else:
         Name += Character
 
-Command = Tool + First + " " # Get compiler command and main file ready
-for X in range(len(Files) - 1):
-    Command += "Source/" + Files[X + 1] + " " # Add other files and source directory
+Command = Tool # Get compiler command and main file ready
+for X in range(len(Files)):
+    Command += "Source/" + Files[X] + " " # Add other files and source directory
 
 Command += "-o " + Name # Add name for compilation
 

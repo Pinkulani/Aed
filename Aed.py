@@ -1,37 +1,36 @@
-# © Pinkulani
+# © 2025 Pinkulani
 
-import subprocess, platform
+import subprocess, platform, os
+
+print("Aed © Pinkulani")
+
+try:
+    with open("Build.aed", "r") as File: # Save configuration
+        Config = []
+        for Line in File:
+            Config.append(Line.strip()) # Remove newline character
+        Tool = Config[0]
+        Name = Config[1]
+        Extension = Config[2]
+except FileNotFoundError:
+    print("Build file not found.")
+
+def GetFiles():
+    Files = [] # Source files
+    for root, dirs, files in os.walk(os.getcwd()):
+        for file in files:
+            if file.endswith(Extension):
+                Files.append(os.path.join(root, file))
+    return Files
 
 print("Building for platform:", platform.system())
-if platform.system() == "Windows":
-    Tool = "cl "
-else:
-    Tool = "clang++ " # clang for Unix because of better support for ARM
-
-Files = []
-with open("Build.aed", "r") as File:
-    for Line in File:
-        Files.append(Line.strip()) # Removes newline character
-
-First = Files[0] # Save main file
-Name = ""
-for Character in First: # Get program name
-    if Character == ".":
-        break
-    else:
-        Name += Character
-
-Command = Tool # Get compiler command and main file ready
+Command = Tool + " "
+Files = GetFiles()
 for X in range(len(Files)):
-    Command += "Source/" + Files[X] + " " # Add other files and source directory
+    Command += Files[X] + " "
+Command += "-o " + Name
 
-Command += "-o " + Name # Add name for compilation
+Result = subprocess.run(Command, shell = True, capture_output = True, text = True)
 
-if platform.system() == "Windows": # Windows needs .bat for call function which is not supported in PowerShell and globals don't really exist
-    Result = subprocess.run(".\Make.bat && "+ Command, shell = True, capture_output = True, text = True)
-else:
-    Result = subprocess.run(Command, shell = True, capture_output = True, text = True)
-    
 print("Command ran:", Command)
-print("Output: ", Result.stdout)
-print("Error: ", Result.stderr)
+print("Error:", Result.stderr)

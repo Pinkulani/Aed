@@ -1,0 +1,4 @@
+clang++
+App
+.cpp
+-O2

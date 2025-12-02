@@ -66,6 +66,8 @@ def Build():
     Optimization = Config[3]
 
     Command = Tool + " "
+    if (platform.system() == "Windows"):
+        Name += ".exe"
     Command += "-o " + Name
     Command += " " + Optimization + " "
 

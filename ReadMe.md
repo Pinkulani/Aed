@@ -12,6 +12,7 @@ Build files automatically by using Aed or adding your files in a list.
 - The second line is your app name
 - The third line is your programming language's extension (used for finding files automatically)
 - The fourth line is your optimization flag
+- The fifth line is the language implementation
 
 The config file is called Config.aed, an example is given in the repository.
 

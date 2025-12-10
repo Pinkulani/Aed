@@ -64,11 +64,13 @@ def Build():
     Name = Config[1]
     Extension = Config[2]
     Optimization = Config[3]
+    Version = Config[4]
 
     Command = Tool + " "
     if (platform.system() == "Windows"):
         Name += ".exe"
-    Command += "-o " + Name
+    Command += "-o " + Name + " "
+    Command += "--std=" + Version + " "
     Command += " " + Optimization + " "
 
     if BuildCustom == True:

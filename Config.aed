@@ -2,3 +2,4 @@ clang++
 App
 .cpp
 -O2
+c++23
